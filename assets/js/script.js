@@ -15,13 +15,7 @@ function clickPress(event) {
                 return response.json();
             })
             .then((data) => {
-                for (var i = 0; i < data._embedded.events.length; i++) {
-                    console.log(data._embedded.events[i]);
-                    var eventDiv = document.createElement("div")
-                    eventDiv.id = i;
-                    document.body.appendChild(eventDiv);
-                    eventDiv.textContent = `${data._embedded.events[i].name} - ${data._embedded.events[i]._embedded.venues[0].name} Date: ${data._embedded.events[i].dates.start.localDate}`;
-                }
+                createEventList(data);
             })}
         
             testApi();
@@ -34,5 +28,26 @@ function musicSearch() {
     
 }
 
+function createEventList(searchData) {
+    var eventListEl = document.createElement("ol");
+    document.body.appendChild(eventListEl);
+    for (var i = 0; i < searchData._embedded.events.length; i++) {
 
+        console.log(searchData._embedded.events[i]);
+        var eventLi = document.createElement("li")
+        
+        eventLi.id = `event-${i}`;
+        eventLi.className = `event-list-items`
+        
+        eventListEl.appendChild(eventLi);
+
+        var event = searchData._embedded.events[i];
+        var date = event.dates.start.localDate
+        var eventVenue = event._embedded.venues[0]
+        var eventName = event.name
+        var venueName = eventVenue.name
+
+        eventLi.textContent = `${eventName} - ${venueName} Date: ${date}`;
+    }
+}
 
