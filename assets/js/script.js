@@ -28,12 +28,6 @@ function clickPress(event) {
 
 function createEventList(searchData) {
     for (var i = 0; i < eventMainEL.length; i++) {
-        // var eventLi = document.createElement("li")
-        
-        // eventLi.id = `event-${i}`;
-        // eventLi.className = `event-list-items`
-        
-        // eventListEl.appendChild(eventLi);
         
         var event = searchData._embedded.events[i];
         var date = event.dates.start.localDate
