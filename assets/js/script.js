@@ -56,8 +56,6 @@ function getBreweries(latitude, longitude, venueData, index) {
     .then((data) => {
         console.log(index)
         console.log(data);
-        console.log(breweryListEls[index].children[0])
-        breweryListEls[index].children[0].textContent = data[0].name
         console.log(venueData);
     })
 }
