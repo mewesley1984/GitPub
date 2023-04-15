@@ -7,7 +7,7 @@ function clickPress(event) {
     if (event.key === "Enter") {
         city = searchEl.value;
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
-        function testApi() {
+        function eventsQuery() {
             fetch(ticketmasterQuery, {
                 mode: 'cors', 
             })
@@ -18,7 +18,7 @@ function clickPress(event) {
                 createEventList(data);
             })}
         
-            testApi();
+            eventsQuery();
     }
 
 }
