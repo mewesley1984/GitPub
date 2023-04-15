@@ -1,6 +1,7 @@
 var searchEl=document.getElementById("search")
 var eventMainEL = document.querySelectorAll(".event-h2");
 var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
+var breweryListEls = document.querySelectorAll(".brewery-list")
 
 
 function clickPress(event) {
@@ -25,11 +26,6 @@ function clickPress(event) {
 
 }
 
-function musicSearch() {
-    
-    
-}
-
 function createEventList(searchData) {
     for (var i = 0; i < eventMainEL.length; i++) {
         // var eventLi = document.createElement("li")
@@ -46,32 +42,22 @@ function createEventList(searchData) {
         var venueName = eventVenue.name
         var venueLat = eventVenue.location.latitude;
         var venueLon = eventVenue.location.longitude;
-        function getBreweries() {
-            fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${venueLat},${venueLon}&per_page=3`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-            })
-        }
-        getBreweries();
+
+        getBreweries(venueLat, venueLon, eventVenue, i);
         eventMainEL[i].textContent = `${eventName} - ${venueName} Date: ${date}`
     }
 }
 
-// function getBreweries(venueData) {
-//     var geocodeAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=b4b306d022e640a29cb62888f869d314`
-//     geoCode();
-//     function geoCode()  {
-//         fetch(geocodeAPI, {
-//             mode: 'cors',
-//         })
-//         .then ((response) => {
-//             return response.json();
-//         })
-//         .then((data) => {
-//             venueData
-//         })
-//     }
-// }
+function getBreweries(latitude, longitude, venueData, index) {
+    fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${latitude},${longitude}&per_page=1`)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(index)
+        console.log(data);
+        console.log(breweryListEls[index].children[0])
+        breweryListEls[index].children[0].textContent = data[0].name
+        console.log(venueData);
+    })
+}
