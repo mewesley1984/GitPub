@@ -1,5 +1,5 @@
 var searchEl=document.getElementById("search")
-
+var eventMainEL = document.querySelectorAll(".event-h2");
 var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
 
 
@@ -31,23 +31,22 @@ function musicSearch() {
 function createEventList(searchData) {
     var eventListEl = document.createElement("ol");
     document.body.appendChild(eventListEl);
-    for (var i = 0; i < searchData._embedded.events.length; i++) {
-
-        console.log(searchData._embedded.events[i]);
-        var eventLi = document.createElement("li")
+    var currentEvent = 0;
+    for (var i = 0; i < eventMainEL.length; i++) {
+        // var eventLi = document.createElement("li")
         
-        eventLi.id = `event-${i}`;
-        eventLi.className = `event-list-items`
+        // eventLi.id = `event-${i}`;
+        // eventLi.className = `event-list-items`
         
-        eventListEl.appendChild(eventLi);
-
+        // eventListEl.appendChild(eventLi);
+        
         var event = searchData._embedded.events[i];
         var date = event.dates.start.localDate
         var eventVenue = event._embedded.venues[0]
         var eventName = event.name
         var venueName = eventVenue.name
 
-        eventLi.textContent = `${eventName} - ${venueName} Date: ${date}`;
+        eventMainEL[i].textContent = `${eventName} - ${venueName} Date: ${date}`
     }
 }
 
