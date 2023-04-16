@@ -4,18 +4,14 @@ var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
 var breweryListEls = document.querySelectorAll(".brewery-list")
 var showCityEl = document.querySelector(".saved-city")
 
-var searchHistory = JSON.parse(localStorage.getItem("searchHistory") || "[]") 
-
 
 function clickPress(event) {
-
-    
     if (event.key === "Enter") {
         city = searchEl.value;
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
         
         saveSearch(city)
-        getCity()
+
         function eventsQuery() {
             fetch(ticketmasterQuery, {
                 mode: 'cors', 
@@ -32,41 +28,37 @@ function clickPress(event) {
     }
 
 }
+function clickClearSearchHistory() {
+    clearSearches()
+    showCity()
+}
 
 function getSearches() {
-    var savedSearch = JSON.parse(localStorage.getItem("searchHistory"))
-    return savedSearch 
+    var searchHistory = JSON.parse(localStorage.getItem("searchHistory") || "[]") 
+    return searchHistory
+}
+
+function clearSearches() {
+    localStorage.setItem('searchHistory', "[]")
 }
 
 function saveSearch(savedCity) {
-    
     var cityInfo = {
     name: savedCity,
    };
-   console.log(savedCity)
  
    var searches = getSearches()
    searches.push(cityInfo)
-   localStorage.setItem('search', JSON.stringify(savedCity))
+   localStorage.setItem('searchHistory', JSON.stringify(searches))
    showCity()
 }
 
 function showCity() {
-    var cityName = JSON.parse(localStorage.getItem("search"))
-    showCityEl.textContent= JSON.stringify(cityName)
+    showCityEl.textContent= getSearches().map(city=>city.name);
 }
 
-
-
 function createEventList(searchData) {
-    for (var i = 0; i < eventMainEL.length; i++) {
-        // var eventLi = document.createElement("li")
-        
-        // eventLi.id = `event-${i}`;
-        // eventLi.className = `event-list-items`
-        
-        // eventListEl.appendChild(eventLi);
-        
+    for (var i = 0; i < eventMainEL.length; i++) { 
         var event = searchData._embedded.events[i];
         var date = event.dates.start.localDate
         var eventVenue = event._embedded.venues[0]
