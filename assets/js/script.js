@@ -2,14 +2,19 @@ var searchEl=document.getElementById("search")
 var eventMainEL = document.querySelectorAll(".event-h2");
 var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
 var breweryListEls = document.querySelectorAll(".brewery-list")
+var showCityEl = document.querySelector(".saved-city")
+
 
 
 function clickPress(event) {
+
+    
     if (event.key === "Enter") {
         city = searchEl.value;
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
-
-
+        
+        saveCity(city)
+        getCity()
         function eventsQuery() {
             fetch(ticketmasterQuery, {
                 mode: 'cors', 
@@ -20,11 +25,37 @@ function clickPress(event) {
             .then((data) => {
                 createEventList(data);
             })}
+
+            localStorage.setItem("search", city)
         
             eventsQuery();
     }
 
 }
+
+function getCity() {
+    var storeCity = localStorage.getItem("search")
+     
+}
+
+function saveCity(savedCity) {
+    
+    var cityInfo = {
+    name: savedCity,
+   };
+   console.log(savedCity)
+ 
+
+   localStorage.setItem('search', JSON.stringify(savedCity))
+   showCity()
+}
+
+function showCity() {
+    var cityName = JSON.parse(localStorage.getItem("search"))
+    showCityEl.textContent= JSON.stringify(cityName)
+}
+
+
 
 function createEventList(searchData) {
     for (var i = 0; i < eventMainEL.length; i++) {
@@ -59,3 +90,4 @@ function getBreweries(latitude, longitude, venueData, index) {
         console.log(venueData);
     })
 }
+

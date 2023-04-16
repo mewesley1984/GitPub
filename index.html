@@ -16,6 +16,7 @@
   <div class="flex flex-col w-3/4 h-full border-solid rounded-3xl border-2 bg-white opacity-75 items-center">
     <header class="header">
         <h1 class="text-center text-7xl mt-20 font-semibold hover:font-bold">GigPub</h1>
+        <div class="saved-city"></div>
     </header>
     <div>
       <h2 class="text-center h-10 mt-10 text-4xl italic">Connecting great music and great beer.</h2>
@@ -38,16 +39,15 @@
     <section class="modal bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
         <h3 id="venue-info">Venue Info</h3>
         
-<!-- Modal toggle -->
-      <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-  Toggle modal
+
+      <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"> Toggle modal
       </button>
 
-<!-- Main modal -->
-<div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative w-full max-w-2xl max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+
+      <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+        
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-end justify-between p-4 border-b rounded-t dark:border-gray-60 min-w-full">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white min-w-full flex-end">
@@ -63,10 +63,10 @@
             
             
         </div>
-    </div>
-</div>
+      </div>
+      </div>
 
-</section>
+    </section>
   
     </div>
     
@@ -154,10 +154,13 @@
       </div>
       <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
         <h3>Venue Info</h3>
+        
       </div>
   
     </div>
   </div>
+
+  
 
   <script src="./assets/js/script.js" ></script>  
 </body>
