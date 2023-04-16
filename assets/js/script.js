@@ -7,10 +7,9 @@ var eventContainer = document.querySelectorAll(".event-container")
 
 function clickPress(event) {
     if (event.key === "Enter") {
-        for (event of eventContainer)
-        {
-        event.setAttribute('style', 'display: block;')
-    }
+
+        for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
+
         var city = searchEl.value;
 
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
@@ -20,13 +19,10 @@ function clickPress(event) {
             fetch(ticketmasterQuery, {
                 mode: 'cors', 
             })
-            .then ((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                createEventList(data);
-            })}
-        
+            .then ((response) => response.json())
+            .then((data) => createEventList(data))
+            .catch((err) => console.log(err))
+        }
             eventsQuery();
     }
 
@@ -45,20 +41,32 @@ function createEventList(searchData) {
         var venueAddress = eventVenue.address.line1;
 
         getBreweries(venueLat, venueLon, eventVenue, i);
-        eventMainEL[i].textContent = `${eventName} ${date}`
-        document.querySelectorAll('.bg-purple-500')[i].firstElementChild.textContent = venueName + " " + venueAddress;
+
+        eventMainEL[i].innerHTML = `${eventName} ${date}`
+
+        document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `${venueName} — ${venueAddress}`;
+
         console.log(eventVenue)
     }
 }
 
 function getBreweries(latitude, longitude, venueData, index) {
-    fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${latitude},${longitude}&per_page=1`)
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        modalTextEls[index].lastElementChild.innerHTML = `<a href=${data[0].website_url}>${data[0].name}</a>`;
-        console.log(data)
-        console.log(data);
-    })
-}
+    fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${latitude},${longitude}&per_page=5`)
+      .then((response) => response.json())
+      .then((data) => {
+        var breweryList = '';
+        for (var i = 0; i < data.length; i++) {
+          var brewery = data[i];
+
+          // Adds each brewery for its respective venue to <li> list in modal 
+          breweryList += `<li><a href="${brewery.website_url}">${brewery.name}</a> - ${brewery.address_1}</li>`;
+        }
+
+        // Sets modal inner content with the brewery information 
+        modalTextEls[index].lastElementChild.innerHTML = `
+          <h3>Here are the Breweries Near ${venueData.name} (From closest to farthest):</h3>
+          <ul>${breweryList}</ul>
+        `;
+      })
+      .catch((err) => console.log(err))
+  }
