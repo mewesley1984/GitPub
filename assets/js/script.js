@@ -10,14 +10,13 @@ var eventContainer = document.querySelectorAll(".event-container")
 function clickPress(event) {
     if (event.key === "Enter") {
 
-        for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
-
+        
         var city = searchEl.value;
-
+        
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
         
         saveSearch(city)
-
+        
         function eventsQuery() {
             fetch(ticketmasterQuery, {
                 mode: 'cors', 
@@ -26,7 +25,8 @@ function clickPress(event) {
             .then((data) => createEventList(data))
             .catch((err) => console.log(err))
         }
-            eventsQuery();
+        eventsQuery();
+        for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
     }
 
 }
@@ -73,7 +73,7 @@ function createEventList(searchData) {
 
         getBreweries(venueLat, venueLon, eventVenue, i);
 
-        eventMainEL[i].innerHTML = `${eventName} ${date}`
+        eventMainEL[i].innerHTML = `${eventName} <span class="dates" id="date-${i + 1}">${date}</span>`
 
         document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `${venueName} — ${venueAddress}`;
 
