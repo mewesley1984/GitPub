@@ -14,19 +14,21 @@
 </head>
 
 
-<body class="flex bg-cover bg-center m-10h-screen items-center justify-center" style="background-image: url(./assets/images/background.png)">
+<body class="flex bg-cover bg-center h-screen items-center justify-center" style="background-image: url(./assets/images/background.png)">
   
-  <div class="flex flex-col w-3/4 h-full border-solid rounded-3xl border-2 bg-white opacity-75 items-center">
+  <div class="flex flex-col w-3/4 h-fit border-solid rounded-3xl border-2 bg-white opacity-75 items-center">
     <header class="header">
-        <h1 class="text-center text-7xl mt-20 font-semibold hover:font-bold">GigPub</h1>
-        <div class="saved-city"></div>
-        <button onclick="clickClearSearchHistory()"> Clear Searches</button>
+      <h1 class="text-center text-7xl mt-20 font-semibold hover:font-bold">GigPub</h1>
     </header>
     <div>
       <h2 class="text-center h-10 mt-10 text-4xl italic">Connecting great music and great beer.</h2>
     </div>
-    <div class="mt-40 content-center">
-      <input id="search" type="text" onkeypress="clickPress(event)" class="search-input border-solid border-2 border-black w-96 h-14 rounded-lg" placeholder=" Search City, State, Artist"></input>
+
+    <div class="saved-city mt-32"></div>
+    <button onclick="clickClearSearchHistory()" class="bg-indigo-950 border-2 rounded-lg h-12 w-auto flex items-center text-center pl-5 pr-5 text-white"> Clear Searches</button>
+    
+    <div class="mt-10 mb-14 content-center">
+      <input id="search" type="text" onkeypress="clickPress(event)" class="search-input border-solid border-2 border-black w-96 h-14 rounded-lg" placeholder=" Search City"></input>
     </div>
     <div class="relative w-[500px] overflow-hidden event-container">
       <input type="checkbox" class="peer
