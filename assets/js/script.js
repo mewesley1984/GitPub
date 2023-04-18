@@ -56,7 +56,7 @@ function saveSearch(savedCity) {
 }
 
 function showCity() {
-    showCityEl.textContent= getSearches().map(city=>city.name);
+    showCityEl.innerHTML= getSearches().map(city=>city.name).join("<br>");
 }
 
 function createEventList(searchData) {
