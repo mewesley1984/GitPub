@@ -2,6 +2,8 @@ var searchEl=document.getElementById("search")
 var eventMainEL = document.querySelectorAll(".event-h2");
 var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
 var breweryListEls = document.querySelectorAll(".brewery-list")
+var showCityEl = document.querySelector(".saved-city")
+
 var modalTextEls = document.querySelectorAll(".w3-container");
 var eventContainer = document.querySelectorAll(".event-container")
 
@@ -13,7 +15,8 @@ function clickPress(event) {
         var city = searchEl.value;
 
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
-
+        
+        saveSearch(city)
 
         function eventsQuery() {
             fetch(ticketmasterQuery, {
@@ -26,6 +29,34 @@ function clickPress(event) {
             eventsQuery();
     }
 
+}
+function clickClearSearchHistory() {
+    clearSearches()
+    showCity()
+}
+
+function getSearches() {
+    var searchHistory = JSON.parse(localStorage.getItem("searchHistory") || "[]") 
+    return searchHistory
+}
+
+function clearSearches() {
+    localStorage.setItem('searchHistory', "[]")
+}
+
+function saveSearch(savedCity) {
+    var cityInfo = {
+    name: savedCity,
+   };
+ 
+   var searches = getSearches()
+   searches.push(cityInfo)
+   localStorage.setItem('searchHistory', JSON.stringify(searches))
+   showCity()
+}
+
+function showCity() {
+    showCityEl.textContent= getSearches().map(city=>city.name);
 }
 
 function createEventList(searchData) {
