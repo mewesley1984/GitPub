@@ -44,11 +44,6 @@ function fetchCity(city) {
         .catch((err) => console.log(err))
 }
 
-function clickClearSearchHistory() {
-    clearSearches()
-    showCity("")
-}
-
 function getSearches() {
     var searchHistory = JSON.parse(localStorage.getItem("searchHistory") || "[]") 
     return searchHistory
@@ -56,6 +51,8 @@ function getSearches() {
 
 function clearSearches() {
     localStorage.setItem('searchHistory', "[]")
+    savedCitiesEl.innerHTML = ""
+    currentCityEl.textContent = ""
 }
 
 function saveSearch(savedCity) {
@@ -75,6 +72,7 @@ function showCity(city) {
 }
 function fetchAndShowCity(city) {
     fetchCity(city)
+    showCity(city)
 }
 function renderCityInfo() {
     savedCitiesEl.innerHTML = getSearches()

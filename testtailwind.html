@@ -1,103 +1,227 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GigPub Connecting Great Music and Great Beer.</title>
-  <script src="./tailwind.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./tailwind.css" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
-<body>
-  <header>
-    <h1>GigPub</h1>
-  </header>
 
-  <form>
-    <label class="block">
-      <span class="block text-sm font-medium text-slate-700">Email</span>
-      <input type="email" class="peer ..."/>
-      <p class="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
-        Please provide a valid email address.
-      </p>
-    </label>
-  </form>
-  
-<div id="test-box" class="card flex items-center height 200px;">
-  <select>
-    <p>This is a test for Tailwind</p>
-  </select>
-</div>
+<body class="flex bg-cover bg-center m-10h-screen items-center justify-center"
+  style="background-image: url(./assets/images/background.png)">
+  <div class="flex flex-col w-3/4 h-full border-solid rounded-3xl border-2 bg-white opacity-75 items-center">
+    <header class="header">
+      <h1 class="text-center text-7xl mt-20 font-semibold hover:font-bold md:w-full">GigPub</h1>
+    </header>
+    <div>
+      <h2 class="text-center h-10 mt-10 text-4xl italic md:w-full">Connecting great music and great beer.</h2>
+    </div>
+    <div class="mt-40 w-96 content-center">
+      <input id="search" type="text" onkeypress="clickPress(event)"
+        class="search-input border-solid border-2 border-black h-14 rounded-lg text-2xl md:w-full"
+        placeholder=" Search City, State, Artist"></input>
+    </div>
+    <div class="relative w-[400px] overflow-hidden">
+      <input type="checkbox" class="peer
+      absolute top-0 inset-x-0 
+      w-full h-12
+      opacity-0 z-10 cursor-pointer">
+      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+        <h2 class="text-lg font-semibold text-white event-h2">Event 1</h2>
+      </div>
+      <div class="absolute top-3 right-3 text-white transition-transform duration-500 
+      rotate-0 peer-checked:rotate-180">
 
+      </div>
+      <section class="modal bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
+        <h3 id="venue-info">Venue Info</h3>
 
-<div class="relative w-[400px] overflow-hidden">
-  <input type="checkbox" class="peer
-  absolute top-0 inset-x-0 
-  w-full h-12
-  opacity-0 z-10 cursor-pointer">
-  <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
-    <h1 class="text-lg font-semibold text-white">See nearby breweries</h1>
+              <!-- Button trigger modal -->
+        <button
+        type="button"
+        class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+        data-te-toggle="modal"
+        data-te-target="#exampleModal"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div
+        data-te-modal-init
+        class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div
+          data-te-modal-dialog-ref
+          class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+          <div
+            class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+            <div
+              class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+              <!--Modal title-->
+              <h5
+                class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
+                id="exampleModalLabel">
+                Modal title
+              </h5>
+              <!--Close button-->
+              <button
+                type="button"
+                class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+                data-te-modal-dismiss
+                aria-label="Close">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <!--Modal body-->
+            <div class="relative flex-auto p-4" data-te-modal-body-ref>
+              Modal body text goes here.
+            </div>
+
+            <!--Modal footer-->
+            <div
+              class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50">
+              <button
+                type="button"
+                class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                data-te-modal-dismiss
+                data-te-ripple-init
+                data-te-ripple-color="light">
+                Close
+              </button>
+              <button
+                type="button"
+                class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                data-te-ripple-init
+                data-te-ripple-color="light">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <div class="relative w-[400px] overflow-hidden">
+      <input type="checkbox" class="peer
+      absolute top-0 inset-x-0 
+      w-full h-12
+      opacity-0 z-10 cursor-pointer">
+      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+        <h2 class="text-lg font-semibold text-white event-h2">Event 2</h2>
+      </div>
+      <div
+        class="absolute top-3 right-3 text-white transition-transform duration-500  rotate-0 peer-checked:rotate-180">
+
+      </div>
+      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
+        <h3 id="venue-info">Venue Info</h3>
+        <h3 id="brewery-link" placeholder="Breweries Nearby"></h3>
+      </div>
+
+    </div>
+
+    <div class="relative w-[400px] overflow-hidden">
+      <input type="checkbox" class="peer
+      absolute top-0 inset-x-0 
+      w-full h-12
+      opacity-0 z-10 cursor-pointer">
+      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+        <h2 class="text-lg font-semibold text-white event-h2">Event 3</h2>
+      </div>
+      <div class="absolute top-3 right-3 text-white transition-transform duration-500 
+      rotate-0 peer-checked:rotate-180">
+
+      </div>
+      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
+        <h3 id="venue-info">Venue Info</h3>
+        <h3 id="brewery-link" placeholder="Breweries Nearby">
+      </div>
+
+    </div>
+    <div class="relative w-[400px] overflow-hidden">
+      <input type="checkbox" class="peer
+      absolute top-0 inset-x-0 
+      w-full h-12
+      opacity-0 z-10 cursor-pointer">
+      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+        <h2 class="text-lg font-semibold text-white event-h2">Event 4</h2>
+      </div>
+      <div class="absolute top-3 right-3 text-white transition-transform duration-500 
+      rotate-0 peer-checked:rotate-180">
+
+      </div>
+      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
+        <h3>Venue Info</h3>
+      </div>
+
+    </div>
+    <div class="relative w-[400px] overflow-hidden">
+      <input type="checkbox" class="peer
+      absolute top-0 inset-x-0 
+      w-full h-12
+      opacity-0 z-10 cursor-pointer">
+      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+        <h2 class="text-lg font-semibold text-white event-h2">Event 5</h2>
+      </div>
+      <div class="absolute top-3 right-3 text-white transition-transform duration-500 
+      rotate-0 peer-checked:rotate-180">
+
+      </div>
+      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
+        <h3>Venue Info</h3>
+      </div>
+
+    </div>
+    <div class="relative w-[400px] overflow-hidden">
+      <input type="checkbox" class="peer
+      absolute top-0 inset-x-0 
+      w-full h-12
+      opacity-0 z-10 cursor-pointer">
+      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+        <h2 class="text-lg font-semibold text-white event-h2">Event 6</h2>
+      </div>
+      <div class="absolute top-3 right-3 text-white transition-transform duration-500 
+      rotate-0 peer-checked:rotate-180">
+
+      </div>
+      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
+        <h3>Venue Info</h3>
+      </div>
+
+    </div>
+    <div>
+      <ul class="searched-city"></ul>
+    </div>
   </div>
-  
-    <div class="absolute top-3 right-3 text-white transition-transform duration-500 
-    rotate-0 peer-checked:rotate-180">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
-    </svg>
-    </div>
-    <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis repellendus magni maxime cumque quam sit consectetur tenetur alias delectus perspiciatis velit commodi culpa, qui natus impedit earum. Recusandae ab soluta facere iste quos cum enim, possimus ducimus deserunt vero libero hic nobis blanditiis commodi minima saepe nemo quisquam quod pariatur.</p>
-    </div>
 
-</div>
-
-<div class="relative w-[400px] overflow-hidden">
-  <input type="checkbox" class="peer
-  absolute top-0 inset-x-0 
-  w-full h-12
-  opacity-0 z-10 cursor-pointer">
-  <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
-    <h1 class="text-lg font-semibold text-white">Second Brewery Name</h1>
-  </div>
-  
-    <div class="absolute top-3 right-3 text-white transition-transform duration-500 
-    rotate-0 peer-checked:rotate-180">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
-    </svg>
-    
-    </div>
-    <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit repellendus ipsum sed! Quidem ea suscipit autem sint eius in omnis maxime soluta quos ipsum sequi harum blanditiis ad, a beatae nobis impedit perferendis minima cum voluptatibus minus totam aliquam! Culpa incidunt non est exercitationem numquam, repellendus assumenda sint eligendi dignissimos?</p>
-    </div>
-
-</div>
-
-<div class="relative w-[400px] overflow-hidden">
-  <input type="checkbox" class="peer
-  absolute top-0 inset-x-0 
-  w-full h-12
-  opacity-0 z-10 cursor-pointer">
-  <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
-    <h1 class="text-lg font-semibold text-white">Third Brewery Name</h1>
-  </div>
-  
-    <div class="absolute top-3 right-3 text-white transition-transform duration-500 
-    rotate-0 peer-checked:rotate-180">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
-    </svg>
-    
-    </div>
-    <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit repellendus ipsum sed! Quidem ea suscipit autem sint eius in omnis maxime soluta quos ipsum sequi harum blanditiis ad, a beatae nobis impedit perferendis minima cum voluptatibus minus totam aliquam! Culpa incidunt non est exercitationem numquam, repellendus assumenda sint eligendi dignissimos?</p>
-    </div>
-
-</div>
-
-
-
+  <script src="./adorah.js"></script>
 </body>
+
 </html>

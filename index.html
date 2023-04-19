@@ -14,39 +14,37 @@
 </head>
 
 
-<body class="flex bg-cover bg-center m-10h-screen items-center justify-center" style="background-image: url(./assets/images/background.png)">
+<body class="flex bg-cover bg-center h-screen items-center justify-center" style="background-image: url(./assets/images/background.png)">
   
-  <div class="flex flex-col w-3/4 h-full border-solid rounded-3xl border-2 bg-white opacity-75 items-center">
+  <div class="flex flex-col w-3/4 h-fit border-solid rounded-3xl border-2 bg-white opacity-75 items-center">
     <header class="header">
-        <h1 class="text-center text-7xl mt-20 font-semibold hover:font-bold">GigPub</h1>
-        
+      <h1 class="text-center text-7xl mt-20 font-semibold hover:font-bold">GigPub</h1>
     </header>
     <div>
       <h2 class="text-center h-10 mt-10 text-4xl italic">Connecting great music and great beer.</h2>
     </div>
-       <h2 class="text-4xl" id="currentCity"></h2>
-       <div id="savedCities"></div>
-       <button onclick="fetchAndShowCity(event.target.value)" value="Milwaukee">Milwaukee</button>
-       <button onclick="clickClearSearchHistory()"> Clear Searches</button>
-    <div class="mt-40 content-center">
-      <input id="search" type="text" onkeypress="clickPress(event)" class="search-input border-solid border-2 border-black w-96 h-14 rounded-lg" placeholder=" Search City, State, Artist"></input>
+       <div class="saved-city mt-32" id="savedCities"></div>
+       <button onclick="clearSearches()" class="bg-indigo-950 border-2 rounded-lg h-12 w-auto flex items-center text-center pl-5 pr-5 text-white"> Clear Searches</button>
+    <div class="mt-10 mb-14 content-center">
+      <input id="search" type="text" onkeypress="clickPress(event)" class="search-input border-solid border-2 border-black w-96 h-14 rounded-lg" placeholder=" Search City"></input>
     </div>
+    <h2 class="text-4xl" id="currentCity"></h2>
     <div class="relative w-[400px] overflow-hidden event-container">
       <input type="checkbox" class="peer
       absolute top-0 inset-x-0 
       w-full h-12
       opacity-0 z-10 cursor-pointer">
-      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+     <div class="bg-slate-800 border-2 rounded-lg h-12 w-full pl-5 flex items-center">
         <h2 class="text-lg font-semibold text-white event-h2">Event 1</h2>
       </div>
       <div class="absolute top-3 right-3 text-white transition-transform duration-500 
       rotate-0 peer-checked:rotate-180">
       </div>
-      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
+      <div class="bg-fuchsia-400 border-2 rounded-lg overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
         <p></p>
         <!-- Trigger/Open the Modal -->
 <button onclick="document.getElementById('id01').style.display='block'"
-class="w3-button">See Breweries</button>
+class="w3-button" >See Breweries</button>
 
 <!-- The Modal -->
 <div id="id01" class="w3-modal">
@@ -68,13 +66,13 @@ class="w3-button">See Breweries</button>
       absolute top-0 inset-x-0 
       w-full h-12
       opacity-0 z-10 cursor-pointer">
-      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+      <div class="bg-slate-800 border-2 rounded-lg h-12 w-full pl-5 flex items-center">
         <h2 class="text-lg font-semibold text-white event-h2">Event 2</h2>
       </div>
       <div class="absolute top-3 right-3 text-white transition-transform duration-500 
       rotate-0 peer-checked:rotate-180">
       </div>
-      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
+      <div class="bg-fuchsia-400 border-2 rounded-lg overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
         <p></p>
         <!-- Trigger/Open the Modal -->
 <button onclick="document.getElementById('id02').style.display='block'"
@@ -99,13 +97,13 @@ class="w3-button">See Breweries</button>
       absolute top-0 inset-x-0 
       w-full h-12
       opacity-0 z-10 cursor-pointer">
-      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+      <div class="bg-slate-800 border-2 rounded-lg h-12 w-full pl-5 flex items-center">
         <h2 class="text-lg font-semibold text-white event-h2">Event 3</h2>
       </div>
       <div class="absolute top-3 right-3 text-white transition-transform duration-500 
       rotate-0 peer-checked:rotate-180">
       </div>
-      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
+      <div class="bg-fuchsia-400 border-2 rounded-lg overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
         <p></p>
         <!-- Trigger/Open the Modal -->
 <button onclick="document.getElementById('id03').style.display='block'"
@@ -131,13 +129,13 @@ class="w3-button">See Breweries</button>
       absolute top-0 inset-x-0 
       w-full h-12
       opacity-0 z-10 cursor-pointer">
-      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+      <div class="bg-slate-800 border-2 rounded-lg h-12 w-full pl-5 flex items-center">
         <h2 class="text-lg font-semibold text-white event-h2">Event 4</h2>
       </div>
       <div class="absolute top-3 right-3 text-white transition-transform duration-500 
       rotate-0 peer-checked:rotate-180">
       </div>
-      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
+      <div class="bg-fuchsia-400 border-2 rounded-lg overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
         <p></p>
         <!-- Trigger/Open the Modal -->
 <button onclick="document.getElementById('id04').style.display='block'"
@@ -162,13 +160,13 @@ class="w3-button">See Breweries</button>
       absolute top-0 inset-x-0 
       w-full h-12
       opacity-0 z-10 cursor-pointer">
-      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+      <div class="bg-slate-800 border-2 rounded-lg h-12 w-full pl-5 flex items-center">
         <h2 class="text-lg font-semibold text-white event-h2">Event 5</h2>
       </div>
       <div class="absolute top-3 right-3 text-white transition-transform duration-500 
       rotate-0 peer-checked:rotate-180">
       </div>
-      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
+      <div class="bg-fuchsia-400 border-2 rounded-lg overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
         <p></p>
         <!-- Trigger/Open the Modal -->
 <button onclick="document.getElementById('id05').style.display='block'"
@@ -193,13 +191,13 @@ class="w3-button">See Breweries</button>
       absolute top-0 inset-x-0 
       w-full h-12
       opacity-0 z-10 cursor-pointer">
-      <div class="bg-green-500 h-12 w-full pl-5 flex items-center">
+      <div class="bg-slate-800 border-2 rounded-lg h-12 w-full pl-5 flex items-center">
         <h2 class="text-lg font-semibold text-white event-h2">Event 6</h2>
       </div>
       <div class="absolute top-3 right-3 text-white transition-transform duration-500 
       rotate-0 peer-checked:rotate-180">
       </div>
-      <div class="bg-purple-500 overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
+      <div class="bg-fuchsia-400 border-2 rounded-lg overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 event">
         <p></p>
         <!-- Trigger/Open the Modal -->
 <button onclick="document.getElementById('id06').style.display='block'"
