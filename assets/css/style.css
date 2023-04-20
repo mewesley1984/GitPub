@@ -5,3 +5,8 @@
 .event-container {
     display: none;
 }
+
+.dates {
+    position: absolute;
+    right: 30px;
+}
