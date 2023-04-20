@@ -77,7 +77,7 @@ function fetchAndShowCity(city) {
 }
 function renderCityInfo() {
     savedCitiesEl.innerHTML = getSearches()
-    .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" value="${cityInfo.name}">${cityInfo.name.toUpperCase()}</button>`)
+    .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" class="saved-city" value="${cityInfo.name}">${cityInfo.name.toUpperCase()}</button>`)
     .join("<br>")
 }
 
@@ -110,12 +110,12 @@ function getBreweries(latitude, longitude, venueData, index) {
           var brewery = data[i];
 
           // Adds each brewery for its respective venue to <li> list in modal 
-          breweryList += `<li><a href="${brewery.website_url}">${brewery.name}</a> - ${brewery.address_1}</li>`;
+          breweryList += `<li class="brewery-list"><a href="${brewery.website_url}">${brewery.name}</a> - ${brewery.address_1}</li>`;
         }
 
         // Sets modal inner content with the brewery information 
         modalTextEls[index].lastElementChild.innerHTML = `
-          <h3>Here are the Breweries Near ${venueData.name} (From closest to farthest):</h3>
+          <h3 class="modal-header">Here are the Breweries Near ${venueData.name} (From closest to farthest):</h3>
           <ul>${breweryList}</ul>
         `;
       })
