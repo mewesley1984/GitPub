@@ -2,12 +2,15 @@ var searchEl=document.getElementById("search")
 var eventMainEL = document.querySelectorAll(".event-h2");
 var ticketMasterAPIKey = '9daAJhjhZVxP9AAiMXhhIxjkZhBwKooJ';
 var breweryListEls = document.querySelectorAll(".brewery-list")
-var showCityEl = document.querySelector(".saved-city")
+var savedCitiesEl = document.getElementById("savedCities")
+var currentCityEl = document.getElementById("currentCity")
+
 
 var modalTextEls = document.querySelectorAll(".w3-container");
 var eventContainer = document.querySelectorAll(".event-container")
 
 function clickPress(event) {
+    console.log(event)
     if (event.key === "Enter") {
 
         
@@ -16,7 +19,12 @@ function clickPress(event) {
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
         
         saveSearch(city)
+<<<<<<< HEAD
         
+=======
+        showCity(city)
+
+>>>>>>> fdbabc8162dcec412f9782c005feb0eb32286595
         function eventsQuery() {
             fetch(ticketmasterQuery, {
                 mode: 'cors', 
@@ -28,11 +36,16 @@ function clickPress(event) {
         eventsQuery();
         for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
     }
-
 }
-function clickClearSearchHistory() {
-    clearSearches()
-    showCity()
+
+function fetchCity(city) {
+        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
+        fetch(ticketmasterQuery, {
+            mode: 'cors', 
+        })
+        .then ((response) => response.json())
+        .then((data) => createEventList(data))
+        .catch((err) => console.log(err))
 }
 
 function getSearches() {
@@ -42,6 +55,8 @@ function getSearches() {
 
 function clearSearches() {
     localStorage.setItem('searchHistory', "[]")
+    savedCitiesEl.innerHTML = ""
+    currentCityEl.textContent = ""
 }
 
 function saveSearch(savedCity) {
@@ -52,11 +67,26 @@ function saveSearch(savedCity) {
    var searches = getSearches()
    searches.push(cityInfo)
    localStorage.setItem('searchHistory', JSON.stringify(searches))
-   showCity()
+   showCity(cityInfo.name)
+   renderCityInfo()
 }
 
+<<<<<<< HEAD
 function showCity() {
     showCityEl.innerHTML= getSearches().map(city=>city.name).join("<br>");
+=======
+function showCity(city) {
+    currentCityEl.textContent = city;
+}
+function fetchAndShowCity(city) {
+    fetchCity(city)
+    showCity(city)
+}
+function renderCityInfo() {
+    savedCitiesEl.innerHTML = getSearches()
+    .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" value="${cityInfo.name}">${cityInfo.name}</button>`)
+    .join("")
+>>>>>>> fdbabc8162dcec412f9782c005feb0eb32286595
 }
 
 function createEventList(searchData) {
@@ -76,8 +106,6 @@ function createEventList(searchData) {
         eventMainEL[i].innerHTML = `${eventName} <span class="dates" id="date-${i + 1}">${date}</span>`
 
         document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `${venueName} — ${venueAddress}`;
-
-        console.log(eventVenue)
     }
 }
 
