@@ -8,6 +8,7 @@ var currentCityEl = document.getElementById("currentCity")
 
 var modalTextEls = document.querySelectorAll(".w3-container");
 var eventContainer = document.querySelectorAll(".event-container")
+// Running this function right away allows users to see their prior searches when the website initially shows.
 renderCityInfo()
 
 function clickPress(event) {
@@ -18,8 +19,9 @@ function clickPress(event) {
         var city = searchEl.value;
         
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
-        
+        // sets the searched item in local storage, and pushes new cities onto object string.  Also gets the saved cities and shows them in the browser
         saveSearch(city)
+        // this allows users to see the current city they searched 
         showCity(city)
 
         function eventsQuery() {
@@ -34,7 +36,7 @@ function clickPress(event) {
         for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
     }
 }
-
+// this function fetches the ticketmaster api and shows info when the user clicks on one of their saved cities.
 function fetchCity(city) {
     console.log(city)
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
@@ -45,18 +47,18 @@ function fetchCity(city) {
         .then((data) => createEventList(data))
         .catch((err) => console.log(err))
 }
-
+// gets the items in searchHistory and returns them as a object.  If there were no prior searches it will show nothng.
 function getSearches() {
     var searchHistory = JSON.parse(localStorage.getItem("searchHistory") || "[]") 
     return searchHistory
 }
-
+// clears search history in browser and local storage
 function clearSearches() {
     localStorage.setItem('searchHistory', "[]")
     savedCitiesEl.innerHTML = ""
     currentCityEl.textContent = ""
 }
-
+// grabs the prior saved cities and adds current saved city to string.  Shows current city searched as well as prior saved cities in browser.
 function saveSearch(savedCity) {
     var cityInfo = {
     name: savedCity,
@@ -68,16 +70,18 @@ function saveSearch(savedCity) {
    showCity(cityInfo.name)
    renderCityInfo()
 }
-
+// shows current city as all upper-case letters.
 function showCity(city) {
     currentCityEl.textContent = city.toUpperCase();
 }
+// when a user clicks on a saved city this will run.  The eventContainer box displays when user clicks, the saved city is now shown as the current city being searched, and the fetchCity function grabs the tickemaster API.
 function fetchAndShowCity(city) {
     
     fetchCity(city)
     showCity(city)
     for (var clickevent of eventContainer) {clickevent.setAttribute('style', 'display: block;')}
 }
+// this functions shows saved cities as clickable buttons all uppercase.  Button brings in fetchAndShowCity function so when user clicks the ticketmaster API runs.
 function renderCityInfo() {
     savedCitiesEl.innerHTML = getSearches()
     .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" class="saved-city" value="${cityInfo.name}">${cityInfo.name.toUpperCase()}</button>`)
