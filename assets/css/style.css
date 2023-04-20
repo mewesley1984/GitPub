@@ -11,6 +11,19 @@
     right: 30px;
 }
 
+.venue-name {
+    padding: 15px;
+    
+}
+
+a:hover {
+    color: black;
+}
+
+li a:hover {
+    color:fuchsia;
+}
+
 .saved-city:hover {
     background-color: rgb(38, 38, 100);
     color: white;
