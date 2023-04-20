@@ -11,7 +11,7 @@ var eventContainer = document.querySelectorAll(".event-container")
 renderCityInfo()
 
 function clickPress(event) {
-    
+    // Looking for Enter key event
     if (event.key === "Enter") {
 
         
@@ -21,7 +21,7 @@ function clickPress(event) {
         
         saveSearch(city)
         showCity(city)
-
+        // Queries the live events from the ticketmaster API
         function eventsQuery() {
             fetch(ticketmasterQuery, {
                 mode: 'cors', 
@@ -30,7 +30,9 @@ function clickPress(event) {
             .then((data) => createEventList(data))
             .catch((err) => console.log(err))
         }
+
         eventsQuery();
+        // Displays list of events once events have been grabbed
         for (event of eventContainer) {event.setAttribute('style', 'display: block;')}
     }
 }
@@ -85,6 +87,7 @@ function renderCityInfo() {
     
 }
 
+// Function that builds the list of events and applies them to HTML elements
 function createEventList(searchData) {
     for (var i = 0; i < eventMainEL.length; i++) {
         
@@ -96,15 +99,15 @@ function createEventList(searchData) {
         var venueLat = eventVenue.location.latitude;
         var venueLon = eventVenue.location.longitude;
         var venueAddress = eventVenue.address.line1;
-
+        // Function call that retrieves brewery information given location from selected event name in list
         getBreweries(venueLat, venueLon, eventVenue, i);
-
+        // Displays the name of the event and the date of that event
         eventMainEL[i].innerHTML = `${eventName} <span class="dates" id="date-${i + 1}">${date}</span>`
-
+        // Displays name of the venue associated with event inside the accordion for that event
         document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `<a href=${eventVenue.url}>${venueName} — ${venueAddress}</a>`;
     }
 }
-
+// Uses the openbrewerydb API to fetch brewery information and display it in modal 
 function getBreweries(latitude, longitude, venueData, index) {
     fetch(`https://api.openbrewerydb.org/v1/breweries?by_dist=${latitude},${longitude}&per_page=5`)
       .then((response) => response.json())
