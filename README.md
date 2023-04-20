@@ -37,7 +37,7 @@ This webpage gives the user a place to go to for searching music events as well 
 1. Get a free API Key from the following sites:
 - https://www.openbrewerydb.org/
 - https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/
-2. Create an index.html and script.js file.
+2. Create an index.html, style.css, script.js file.
 3. Create a variable for each API Key in your script.js file. 
 
 ## Deployed Page Link
