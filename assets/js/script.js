@@ -52,13 +52,13 @@ function getSearches() {
     var searchHistory = JSON.parse(localStorage.getItem("searchHistory") || "[]") 
     return searchHistory
 }
-// clears search history in browser and local storage
+// clears search history on webpage and local storage
 function clearSearches() {
     localStorage.setItem('searchHistory', "[]")
     savedCitiesEl.innerHTML = ""
     currentCityEl.textContent = ""
 }
-// grabs the prior saved cities and adds current saved city to string.  Shows current city searched as well as prior saved cities in browser.
+// grabs the prior saved cities and adds current saved city to string.  Shows current city as well as prior saved cities on webpage.
 function saveSearch(savedCity) {
     var cityInfo = {
     name: savedCity,
