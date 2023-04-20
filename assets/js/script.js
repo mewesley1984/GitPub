@@ -68,7 +68,7 @@ function saveSearch(savedCity) {
 }
 
 function showCity(city) {
-    currentCityEl.textContent = city;
+    currentCityEl.textContent = city.toUpperCase();
 }
 function fetchAndShowCity(city) {
     fetchCity(city)
@@ -76,7 +76,7 @@ function fetchAndShowCity(city) {
 }
 function renderCityInfo() {
     savedCitiesEl.innerHTML = getSearches()
-    .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" value="${cityInfo.name}">${cityInfo.name}</button>`)
+    .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" value="${cityInfo.name}">${cityInfo.name.toUpperCase()}</button>`)
     .join("<br>")
 }
 
