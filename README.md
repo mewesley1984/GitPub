@@ -42,6 +42,7 @@ This webpage gives the user a place to go to for searching music events as well 
 
 ## Deployed Page Link
 
+https://mewesley1984.github.io/GitPub/
 
 ## Authors 
 - Chris Messa 
