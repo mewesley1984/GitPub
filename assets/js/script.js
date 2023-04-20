@@ -8,7 +8,7 @@ var currentCityEl = document.getElementById("currentCity")
 
 var modalTextEls = document.querySelectorAll(".w3-container");
 var eventContainer = document.querySelectorAll(".event-container")
-
+renderCityInfo()
 function clickPress(event) {
     console.log(event)
     if (event.key === "Enter") {
@@ -71,10 +71,27 @@ function showCity(city) {
     currentCityEl.textContent = city.toUpperCase();
 }
 function fetchAndShowCity(city) {
+    
     fetchCity(city)
     showCity(city)
 }
 function renderCityInfo() {
+    var city = searchEl.value;
+        
+    var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
+    
+    saveSearch(city)
+    showCity(city)
+
+    function eventsQuery() {
+        fetch(ticketmasterQuery, {
+            mode: 'cors', 
+        })
+        .then ((response) => response.json())
+        .then((data) => createEventList(data))
+        .catch((err) => console.log(err))
+    }
+    eventsQuery();
     savedCitiesEl.innerHTML = getSearches()
     .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" value="${cityInfo.name}">${cityInfo.name.toUpperCase()}</button>`)
     .join("<br>")
@@ -96,7 +113,7 @@ function createEventList(searchData) {
 
         eventMainEL[i].innerHTML = `${eventName} <span class="dates" id="date-${i + 1}">${date}</span>`
 
-        document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `${venueName} — ${venueAddress}`;
+        document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `<a href=${eventVenue.url}>${venueName} — ${venueAddress}</a>`;
     }
 }
 
