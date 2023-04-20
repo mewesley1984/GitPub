@@ -19,12 +19,8 @@ function clickPress(event) {
         var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
         
         saveSearch(city)
-<<<<<<< HEAD
-        
-=======
         showCity(city)
 
->>>>>>> fdbabc8162dcec412f9782c005feb0eb32286595
         function eventsQuery() {
             fetch(ticketmasterQuery, {
                 mode: 'cors', 
@@ -71,10 +67,6 @@ function saveSearch(savedCity) {
    renderCityInfo()
 }
 
-<<<<<<< HEAD
-function showCity() {
-    showCityEl.innerHTML= getSearches().map(city=>city.name).join("<br>");
-=======
 function showCity(city) {
     currentCityEl.textContent = city;
 }
@@ -86,7 +78,6 @@ function renderCityInfo() {
     savedCitiesEl.innerHTML = getSearches()
     .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" value="${cityInfo.name}">${cityInfo.name}</button>`)
     .join("")
->>>>>>> fdbabc8162dcec412f9782c005feb0eb32286595
 }
 
 function createEventList(searchData) {
