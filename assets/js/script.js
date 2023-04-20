@@ -73,6 +73,7 @@ function showCity(city) {
 function fetchAndShowCity(city) {
     fetchCity(city)
     showCity(city)
+    
 }
 function renderCityInfo() {
     savedCitiesEl.innerHTML = getSearches()
