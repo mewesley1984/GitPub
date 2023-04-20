@@ -84,8 +84,8 @@ function fetchAndShowCity(city) {
 // this functions shows saved cities as clickable buttons all uppercase.  Button brings in fetchAndShowCity function so when user clicks the ticketmaster API runs.
 function renderCityInfo() {
     savedCitiesEl.innerHTML = getSearches()
-    .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" class="saved-city" value="${cityInfo.name}">${cityInfo.name.toUpperCase()}</button>`)
-    .join("<br>")
+    .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" value="${cityInfo.name}">${cityInfo.name}</button>`)
+    .join("")
     
 }
 
