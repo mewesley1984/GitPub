@@ -17,7 +17,7 @@ function clickPress(event) {
         
         var city = searchEl.value;
         
-        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
+        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=date,name,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
         
         saveSearch(city)
         showCity(city)
@@ -37,7 +37,7 @@ function clickPress(event) {
 
 function fetchCity(city) {
     console.log(city)
-        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&city=${city}&apikey=${ticketMasterAPIKey}`;
+        var ticketmasterQuery = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&countryCode=US&sort=date,name,asc&city=${city}&apikey=${ticketMasterAPIKey}`;
         fetch(ticketmasterQuery, {
             mode: 'cors', 
         })
