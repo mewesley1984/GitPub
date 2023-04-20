@@ -71,6 +71,7 @@ function showCity(city) {
     currentCityEl.textContent = city.toUpperCase();
 }
 function fetchAndShowCity(city) {
+    
     fetchCity(city)
     showCity(city)
 }
@@ -96,7 +97,7 @@ function createEventList(searchData) {
 
         eventMainEL[i].innerHTML = `${eventName} <span class="dates" id="date-${i + 1}">${date}</span>`
 
-        document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `${venueName} — ${venueAddress}`;
+        document.querySelectorAll('.event')[i].firstElementChild.innerHTML = `<a href=${eventVenue.url}>${venueName} — ${venueAddress}</a>`;
     }
 }
 
