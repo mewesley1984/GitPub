@@ -4,8 +4,8 @@ A page where users can search by city to find music events and breweries nearby.
 
 ## User Story
 
-AS a person trying to plan their night out
-I WANT to find out what live music events and breweries are in my area
+AS a person trying to plan their night out  
+I WANT to find out what live music events and breweries are in my area  
 SO THAT I know where the beers that are local to the venue came from, and I can go check them out too
 
 ## Acceptance Critera
@@ -16,9 +16,10 @@ THEN I'm given the option to search for live music nearby
 WHEN I enter my search criteria  
 THEN I'm given a list of live music options, as well as breweries in the area
 
-## Mock Up
+## Visuals
 
-
+![GigPub Page Layout](./assets/images/gigpub-page.png)
+![Modal showing brewery list](./assets/images/modal-list.png)
 
 ## Technologies Used
 
@@ -36,12 +37,12 @@ This webpage gives the user a place to go to for searching music events as well 
 1. Get a free API Key from the following sites:
 - https://www.openbrewerydb.org/
 - https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/
-2. Clone the repo: https://github.com/mewesley1984/GitPub.git 
-3. Create an index.html and script.js file.
-4. Create a variable for each API Key in your script.js file. 
+2. Create an index.html, style.css, script.js file.
+3. Create a variable for each API Key in your script.js file. 
 
 ## Deployed Page Link
 
+https://mewesley1984.github.io/GitPub/
 
 ## Authors 
 - Chris Messa 
