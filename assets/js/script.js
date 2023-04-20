@@ -77,7 +77,7 @@ function fetchAndShowCity(city) {
 function renderCityInfo() {
     savedCitiesEl.innerHTML = getSearches()
     .map(cityInfo=>`<button onclick="fetchAndShowCity(event.target.value)" value="${cityInfo.name}">${cityInfo.name}</button>`)
-    .join("")
+    .join("<br>")
 }
 
 function createEventList(searchData) {
